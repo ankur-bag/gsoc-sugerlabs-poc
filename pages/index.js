@@ -76,36 +76,78 @@ export default function LandingPage() {
         </motion.div>
       </section>
 
-      {/* Elegant How it works Section */}
-      <section id="how-it-works" className="py-32 px-6 bg-gray-50/50 border-y border-gray-100 relative z-10">
-        <div className="max-w-6xl mx-auto">
+      {/* Rethought How it works Section */}
+      <section id="how-it-works" className="py-32 px-6 relative z-10 bg-white">
+        <div className="max-w-5xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }}
             transition={springTransition}
-            className="text-3xl md:text-4xl font-light text-center mb-24 text-gray-900 tracking-tight"
+            className="text-4xl md:text-5xl font-light text-center mb-32 text-gray-900 tracking-tight"
           >
-            How it works
+            The reflection process.
           </motion.h2>
 
-          <div className="grid md:grid-cols-3 gap-12 md:gap-8">
-            {[
-              { title: "Create", desc: "Build something new using code, art, music, or writing.", icon: <IoMdColorPalette /> },
-              { title: "Reflect", desc: "Interact with an intelligent guide to explore your process and feelings.", icon: <LuNotepadText /> },
-              { title: "Grow", desc: "Review your elegant journal to see your progress over time.", icon: <FiMusic /> }
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} 
-                transition={{ delay: i * 0.1, ...springTransition }}
-                className="framer-panel p-10 text-center flex flex-col items-center group cursor-default"
-              >
-                <div className="text-4xl text-gray-300 group-hover:text-gray-900 transition-colors duration-500 mb-8">
-                  {item.icon}
+          <div className="space-y-32">
+            
+            {/* Step 1 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={springTransition}
+              className="flex flex-col md:flex-row items-center gap-12 md:gap-24"
+            >
+              <div className="md:w-1/2 relative">
+                <div className="absolute -top-16 -left-8 text-[12rem] font-light text-gray-50 leading-none -z-10 select-none">1</div>
+                <h3 className="text-2xl font-normal text-gray-900 mb-4">Do your thing</h3>
+                <p className="text-gray-500 font-light text-lg leading-relaxed">Whether you are building a website, painting on canvas, or composing a melody, just focus entirely on creating something you're proud of.</p>
+              </div>
+              <div className="md:w-1/2 flex justify-center">
+                <div className="w-full max-w-[320px] aspect-square bg-gray-50 rounded-full flex items-center justify-center border border-gray-100 relative overflow-hidden">
+                  <motion.div animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="w-64 h-64 border border-gray-200 rounded-full border-dashed absolute" />
+                  <IoMdColorPalette className="text-6xl text-gray-300 z-10" />
                 </div>
-                <h3 className="text-xl font-normal text-gray-900 mb-4">{item.title}</h3>
-                <p className="text-gray-500 font-light leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
+              </div>
+            </motion.div>
+
+            {/* Step 2 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ ...springTransition, delay: 0.1 }}
+              className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-24"
+            >
+              <div className="md:w-1/2 relative">
+                <div className="absolute -top-16 -left-8 text-[12rem] font-light text-gray-50 leading-none -z-10 select-none">2</div>
+                <h3 className="text-2xl font-normal text-gray-900 mb-4">Pause and think</h3>
+                <p className="text-gray-500 font-light text-lg leading-relaxed">Bring your project here. Our intelligent mentor will ask you deep, dynamic questions about your challenges and breakthroughs.</p>
+              </div>
+              <div className="md:w-1/2 flex justify-center">
+                <div className="w-full max-w-[320px] aspect-square bg-gray-50 rounded-[3rem] flex items-center justify-center border border-gray-100 relative">
+                  <LuNotepadText className="text-6xl text-gray-300 z-10" />
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Step 3 */}
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ ...springTransition, delay: 0.2 }}
+              className="flex flex-col md:flex-row items-center gap-12 md:gap-24"
+            >
+              <div className="md:w-1/2 relative">
+                <div className="absolute -top-16 -left-8 text-[12rem] font-light text-gray-50 leading-none -z-10 select-none">3</div>
+                <h3 className="text-2xl font-normal text-gray-900 mb-4">Build an archive</h3>
+                <p className="text-gray-500 font-light text-lg leading-relaxed">Your answers are elegantly synthesized into a first-person journal entry, creating a permanent portfolio of your thought processes.</p>
+              </div>
+              <div className="md:w-1/2 flex justify-center">
+                <div className="w-[200px] h-[280px] bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] rounded-2xl border border-gray-100 flex flex-col p-8 rotate-3 transition-transform hover:rotate-0 duration-500">
+                  <div className="w-1/2 h-2.5 bg-gray-200 rounded-full mb-8"></div>
+                  <div className="w-full h-2 bg-gray-50 rounded-full mb-4"></div>
+                  <div className="w-5/6 h-2 bg-gray-50 rounded-full mb-4"></div>
+                  <div className="w-full h-2 bg-gray-50 rounded-full mb-4"></div>
+                  <div className="w-2/3 h-2 bg-gray-50 rounded-full"></div>
+                  <div className="mt-auto flex justify-end">
+                    <FiMusic className="text-gray-200 text-2xl" />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
@@ -191,11 +233,8 @@ export default function LandingPage() {
       </section>
       
       {/* Minimal Footer */}
-      <footer className="flex flex-col items-center gap-4 justify-center py-16 text-gray-400 text-sm font-light">
+      <footer className="flex flex-col items-center gap-4 justify-center pb-12 text-gray-400 text-sm font-light">
         <p>A minimalist space for reflection.</p>
-        <Link href="/journal" className="hover:text-gray-900 transition-colors underline-offset-4 decoration-gray-200 hover:decoration-gray-300">
-          View Journal Archive
-        </Link>
       </footer>
     </div>
   );

@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import Head from "next/head";
 import { ClerkProvider, Show, SignInButton, UserButton } from "@clerk/nextjs";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -15,7 +16,10 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       {!isReflectPage && (
-        <header className="absolute top-0 right-0 p-6 z-50 flex items-center gap-4">
+        <header className="absolute top-0 right-0 p-6 z-50 flex items-center gap-6">
+          <Link href="/journal" className="text-sm font-light text-gray-500 hover:text-gray-900 transition-colors hidden sm:block">
+            Journal
+          </Link>
           <Show when="signed-out">
             <SignInButton mode="modal">
               <button className="framer-button px-6 py-2 text-sm bg-gray-900 text-white rounded-full">Sign In</button>
