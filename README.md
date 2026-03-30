@@ -1,24 +1,24 @@
-# 🎨 Sugar Reflect Buddy
+#  Sugar Reflect Buddy
 
 An intelligent, AI-powered journaling assistant that helps young learners reflect on their creative work through guided conversations instead of static, boring forms.
 
 ---
 
-## 🧠 Core Idea
+##  Core Idea
 
 Traditional journaling asks:  
 > *"What did you do today?"*
 
 Most users (especially kids) don’t know what to write when faced with a blank form. **Sugar Reflect Buddy** solves this by:
 
-- **Acting like a friendly mentor 🤖**
+- **Acting like a friendly mentor **
 - **Asking structured reflection questions**
 - **Understanding responses dynamically**
 - **Converting chat → into a polished journal entry**
 
 ---
 
-## ✨ Features
+##  Features
 
 ### 💬 Conversational Reflection
 The AI naturally guides the user through the reflection process:
@@ -27,26 +27,26 @@ The AI naturally guides the user through the reflection process:
 - *Why does it matter?*
 - *What will you do next?*
 
-### 🧠 Intelligent Stage Detection
+### Intelligent Stage Detection
 Automatically detects the reflection stage based on the user's natural language responses:
 `Description` → `Feelings` → `Analysis` → `Next Steps`
 *(No hardcoded forms—the AI adapts to the conversation flow!)*
 
-### ✍️ Auto Journal Generation
+###  Auto Journal Generation
 Converts the entire chat transcript into a clean, first-person reflective paragraph.
 
-### 🔐 Secure Authentication & Personal Archive
+###  Secure Authentication & Personal Archive
 - User login & session management via **Clerk**.
 - Private journal entries scoped securely to each user's profile.
 - View past reflections through a clean, masonry-style dashboard UI.
 
-### ⚡ Optimized AI Flow
+###  Optimized AI Flow
 - **Failsafe System**: Maximum of 5 responses prevents overuse, AI hallucinations, and infinite conversational loops.
 - Fast, real-time interactions with robust loading states.
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 **Frontend**
 - Next.js (Pages Router)
@@ -67,7 +67,7 @@ Converts the entire chat transcript into a clean, first-person reflective paragr
 
 ---
 
-## 🧩 Project Structure
+##  Project Structure
 ```text
 pages/
 ├── index.js        # Landing page
@@ -80,7 +80,7 @@ pages/
 
 ---
 
-## 🔄 How It Works
+##  How It Works
 
 1. **User Starts Session**
    - Selects activity (Coding, Music, Drawing, Writing).
@@ -100,7 +100,7 @@ pages/
 
 ---
 
-## 🧠 AI Design Principles
+##  AI Design Principles
 - **Conversational, not robotic**
 - **Age-appropriate tone (8–12 years)**
 - **No repetition**
@@ -109,14 +109,14 @@ pages/
 
 ---
 
-## 🔐 Security & Constraints
+##  Security & Constraints
 - Auth-gated API routes and React pages.
 - User-specific database queries.
 - Zero shared journal access.
 
 ---
 
-## 🚀 Future Improvements
+##  Future Improvements
 - **Long-term memory**: Implementing LangChain / Vector DB combinations so the AI remembers past projects.
 - **Emotion detection**: Specialized visual cues based on student sentiment.
 - **Voice-based reflection**: Integrating Web Speech API.
