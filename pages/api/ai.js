@@ -17,7 +17,7 @@ export default async function handler(req, res) {
       if (userReplies >= 5) {
         return res.json({
           stage: "complete",
-          question: "Thank you for taking the time to reflect! I'm saving this to your journal now."
+          question: "Thank you for taking the time to reflect!"
         });
       }
 
