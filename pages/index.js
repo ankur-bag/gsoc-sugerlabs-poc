@@ -49,16 +49,16 @@ export default function LandingPage() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col items-center"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-gray-100 text-gray-500 text-sm font-light mb-12 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-gray-100 text-gray-500 text-xs md:text-sm font-light mb-8 md:mb-12 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-gray-900 animate-pulse" />
               INTELLIGENT REFLECTION
             </div>
 
-            <h1 className="text-6xl md:text-[6rem] font-light text-gray-900 mb-10 tracking-tighter leading-[1.05]">
-              A thoughtful space <br/>
+            <h1 className="text-5xl sm:text-6xl md:text-[6rem] font-light text-gray-900 mb-8 md:mb-10 tracking-tighter leading-[1.05] px-2">
+              A thoughtful space <br className="hidden sm:block" />
               <span className="text-gray-300 italic font-serif tracking-normal">for young minds.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-14 px-4">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-10 md:mb-14 px-6 md:px-4">
               Turn your everyday creative activities into profound learning experiences through gentle, AI-guided journaling.
             </p>
           </motion.div>
@@ -67,7 +67,7 @@ export default function LandingPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 1 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 px-6 sm:px-0"
           >
             <button 
               onClick={() => document.getElementById("start-section").scrollIntoView({ behavior: 'smooth' })}
@@ -96,22 +96,22 @@ export default function LandingPage() {
             The reflection process.
           </motion.h2>
 
-          <div className="space-y-32">
+          <div className="space-y-24 md:space-y-32">
             
             {/* Step 1 */}
             <motion.div 
               initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={springTransition}
-              className="flex flex-col md:flex-row items-center gap-12 md:gap-24"
+              className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-24"
             >
-              <div className="md:w-1/2 relative">
-                <div className="absolute -top-16 -left-8 text-[12rem] font-light text-gray-50 leading-none -z-10 select-none">1</div>
-                <h3 className="text-2xl font-normal text-gray-900 mb-4">Do your thing</h3>
-                <p className="text-gray-500 font-light text-lg leading-relaxed">Whether you are building a website, painting on canvas, or composing a melody, just focus entirely on creating something you're proud of.</p>
+              <div className="md:w-1/2 relative mt-8 md:mt-0 text-center md:text-left px-4 md:px-0">
+                <div className="absolute -top-12 left-1/2 -translate-x-1/2 md:-translate-x-0 md:-left-8 text-[8rem] md:text-[12rem] font-light text-gray-50 leading-none -z-10 select-none">1</div>
+                <h3 className="text-2xl md:text-3xl font-normal text-gray-900 mb-4">Do your thing</h3>
+                <p className="text-gray-500 font-light text-base md:text-lg leading-relaxed">Whether you are building a website, painting on canvas, or composing a melody, just focus entirely on creating something you're proud of.</p>
               </div>
-              <div className="md:w-1/2 flex justify-center">
-                <div className="w-full max-w-[320px] aspect-square bg-gray-50 rounded-full flex items-center justify-center border border-gray-100 relative overflow-hidden">
-                  <motion.div animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="w-64 h-64 border border-gray-200 rounded-full border-dashed absolute" />
-                  <IoMdColorPalette className="text-6xl text-gray-300 z-10" />
+              <div className="md:w-1/2 flex justify-center w-full">
+                <div className="w-48 h-48 md:w-full md:max-w-[320px] md:aspect-square bg-gray-50 rounded-full flex items-center justify-center border border-gray-100 relative overflow-hidden">
+                  <motion.div animate={{ rotate: 360 }} transition={{ duration: 40, repeat: Infinity, ease: "linear" }} className="w-[150%] h-[150%] border border-gray-200 rounded-full border-dashed absolute" />
+                  <IoMdColorPalette className="text-5xl md:text-6xl text-gray-300 z-10" />
                 </div>
               </div>
             </motion.div>
@@ -119,16 +119,16 @@ export default function LandingPage() {
             {/* Step 2 */}
             <motion.div 
               initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ ...springTransition, delay: 0.1 }}
-              className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-24"
+              className="flex flex-col-reverse md:flex-row-reverse items-center gap-12 md:gap-24"
             >
-              <div className="md:w-1/2 relative">
-                <div className="absolute -top-16 -left-8 text-[12rem] font-light text-gray-50 leading-none -z-10 select-none">2</div>
-                <h3 className="text-2xl font-normal text-gray-900 mb-4">Pause and think</h3>
-                <p className="text-gray-500 font-light text-lg leading-relaxed">Bring your project here. Our intelligent mentor will ask you deep, dynamic questions about your challenges and breakthroughs.</p>
+              <div className="md:w-1/2 relative mt-8 md:mt-0 text-center md:text-left px-4 md:px-0">
+                <div className="absolute -top-12 left-1/2 -translate-x-1/2 md:-translate-x-0 md:-left-8 text-[8rem] md:text-[12rem] font-light text-gray-50 leading-none -z-10 select-none">2</div>
+                <h3 className="text-2xl md:text-3xl font-normal text-gray-900 mb-4">Pause and think</h3>
+                <p className="text-gray-500 font-light text-base md:text-lg leading-relaxed">Bring your project here. Our intelligent mentor will ask you deep, dynamic questions about your challenges and breakthroughs.</p>
               </div>
-              <div className="md:w-1/2 flex justify-center">
-                <div className="w-full max-w-[320px] aspect-square bg-gray-50 rounded-[3rem] flex items-center justify-center border border-gray-100 relative">
-                  <LuNotepadText className="text-6xl text-gray-300 z-10" />
+              <div className="md:w-1/2 flex justify-center w-full">
+                <div className="w-48 h-48 md:w-full md:max-w-[320px] md:aspect-square bg-gray-50 rounded-[2rem] md:rounded-[3rem] flex items-center justify-center border border-gray-100 relative">
+                  <LuNotepadText className="text-5xl md:text-6xl text-gray-300 z-10" />
                 </div>
               </div>
             </motion.div>
@@ -136,22 +136,22 @@ export default function LandingPage() {
             {/* Step 3 */}
             <motion.div 
               initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ ...springTransition, delay: 0.2 }}
-              className="flex flex-col md:flex-row items-center gap-12 md:gap-24"
+              className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-24"
             >
-              <div className="md:w-1/2 relative">
-                <div className="absolute -top-16 -left-8 text-[12rem] font-light text-gray-50 leading-none -z-10 select-none">3</div>
-                <h3 className="text-2xl font-normal text-gray-900 mb-4">Build an archive</h3>
-                <p className="text-gray-500 font-light text-lg leading-relaxed">Your answers are elegantly synthesized into a first-person journal entry, creating a permanent portfolio of your thought processes.</p>
+              <div className="md:w-1/2 relative mt-8 md:mt-0 text-center md:text-left px-4 md:px-0">
+                <div className="absolute -top-12 left-1/2 -translate-x-1/2 md:-translate-x-0 md:-left-8 text-[8rem] md:text-[12rem] font-light text-gray-50 leading-none -z-10 select-none">3</div>
+                <h3 className="text-2xl md:text-3xl font-normal text-gray-900 mb-4">Build an archive</h3>
+                <p className="text-gray-500 font-light text-base md:text-lg leading-relaxed">Your answers are elegantly synthesized into a first-person journal entry, creating a permanent portfolio of your thought processes.</p>
               </div>
-              <div className="md:w-1/2 flex justify-center">
-                <div className="w-[200px] h-[280px] bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] rounded-2xl border border-gray-100 flex flex-col p-8 rotate-3 transition-transform hover:rotate-0 duration-500">
-                  <div className="w-1/2 h-2.5 bg-gray-200 rounded-full mb-8"></div>
-                  <div className="w-full h-2 bg-gray-50 rounded-full mb-4"></div>
-                  <div className="w-5/6 h-2 bg-gray-50 rounded-full mb-4"></div>
-                  <div className="w-full h-2 bg-gray-50 rounded-full mb-4"></div>
+              <div className="md:w-1/2 flex justify-center w-full">
+                <div className="w-[160px] h-[220px] md:w-[200px] md:h-[280px] bg-white shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] rounded-2xl border border-gray-100 flex flex-col p-6 md:p-8 rotate-3 transition-transform hover:rotate-0 duration-500">
+                  <div className="w-1/2 h-2.5 bg-gray-200 rounded-full mb-6 md:mb-8"></div>
+                  <div className="w-full h-2 bg-gray-50 rounded-full mb-3 md:mb-4"></div>
+                  <div className="w-5/6 h-2 bg-gray-50 rounded-full mb-3 md:mb-4"></div>
+                  <div className="w-full h-2 bg-gray-50 rounded-full mb-3 md:mb-4"></div>
                   <div className="w-2/3 h-2 bg-gray-50 rounded-full"></div>
                   <div className="mt-auto flex justify-end">
-                    <FiMusic className="text-gray-200 text-2xl" />
+                    <FiMusic className="text-gray-200 text-xl md:text-2xl" />
                   </div>
                 </div>
               </div>
@@ -194,7 +194,7 @@ export default function LandingPage() {
           >
             <div className="mb-14">
               <h3 className="text-lg font-normal text-gray-900 mb-6">1. Activity</h3>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {activities.map(act => (
                   <motion.button
                     key={act.id}

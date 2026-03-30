@@ -82,7 +82,7 @@ export default function Journal() {
       </div>
 
       {loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[1, 2, 3, 4].map(i => (
             <div key={i} className="framer-panel h-64 animate-pulse border border-gray-50 bg-gray-50/50" />
           ))}
@@ -99,7 +99,7 @@ export default function Journal() {
           <p className="text-lg text-gray-500 font-light">Complete an activity to begin your journal.</p>
         </motion.div>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence>
             {entries.map((entry, idx) => (
               <motion.div 
