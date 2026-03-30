@@ -17,12 +17,9 @@ export default function App({ Component, pageProps }) {
       </Head>
       {!isReflectPage && (
         <header className="absolute top-0 right-0 p-6 z-50 flex items-center gap-6">
-          <Link href="/journal" className="text-sm font-light text-gray-500 hover:text-gray-900 transition-colors hidden sm:block">
-            Journal
-          </Link>
           <Show when="signed-out">
             <SignInButton mode="modal">
-              <button className="framer-button px-6 py-2 text-sm bg-gray-900 text-white rounded-full">Sign In</button>
+              <button className="framer-button px-6 py-2 text-sm bg-gray-900 text-white rounded-full cursor-pointer">Sign In</button>
             </SignInButton>
           </Show>
           <Show when="signed-in">

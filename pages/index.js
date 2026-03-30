@@ -38,39 +38,48 @@ export default function LandingPage() {
       {/* Removed Navbar */}
 
       {/* Minimalist Hero Section */}
-      <section className="pt-24 pb-32 px-6 max-w-5xl mx-auto text-center relative z-10">
-        <motion.div style={{ y, opacity }}>
+      <section className="pt-32 pb-40 px-6 max-w-5xl mx-auto text-center relative z-10 flex flex-col items-center justify-center min-h-[85vh]">
+        {/* Subtle background glow */}
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-full max-w-3xl h-96 bg-gray-50 rounded-full blur-[100px] opacity-70 -z-10 pointer-events-none" />
+        
+        <motion.div style={{ y, opacity }} className="w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center"
           >
-            <h1 className="text-5xl md:text-7xl font-light text-gray-900 mb-8 tracking-tight leading-tight">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 backdrop-blur-md border border-gray-100 text-gray-500 text-sm font-light mb-12 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-gray-900 animate-pulse" />
+              INTELLIGENT REFLECTION
+            </div>
+
+            <h1 className="text-6xl md:text-[6rem] font-light text-gray-900 mb-10 tracking-tighter leading-[1.05]">
               A thoughtful space <br/>
-              <span className="text-gray-400">for young minds.</span>
+              <span className="text-gray-300 italic font-serif tracking-normal">for young minds.</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-500 font-light leading-relaxed max-w-3xl mx-auto mb-16">
-              Turn your everyday activities into profound learning experiences with gentle guided reflections.
+            <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed max-w-2xl mx-auto mb-14 px-4">
+              Turn your everyday creative activities into profound learning experiences through gentle, AI-guided journaling.
             </p>
           </motion.div>
 
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="flex justify-center gap-6"
+            transition={{ delay: 0.4, duration: 1 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <button 
               onClick={() => document.getElementById("start-section").scrollIntoView({ behavior: 'smooth' })}
-              className="framer-button px-8 py-4 text-lg"
+              className="framer-button px-10 py-4 text-lg cursor-pointer flex items-center justify-center gap-2 w-full sm:w-auto"
             >
               Start Reflection
             </button>
             <button 
-              onClick={() => document.getElementById("how-it-works").scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 text-gray-500 hover:text-gray-900 font-normal transition-colors text-lg"
+              onClick={() => router.push('/journal')}
+              className="px-10 py-4 bg-white border border-gray-200 rounded-full text-gray-600 hover:text-gray-900 hover:border-gray-300 hover:bg-gray-50 font-normal transition-all text-lg cursor-pointer shadow-sm w-full sm:w-auto"
             >
-              Learn more
+              Journals
             </button>
           </motion.div>
         </motion.div>
@@ -170,7 +179,7 @@ export default function LandingPage() {
             <h3 className="text-2xl font-normal text-gray-900 mb-3 tracking-tight">Authentication Required</h3>
             <p className="text-gray-500 font-light mb-10 max-w-md leading-relaxed text-lg">Your reflections are deeply personal. Please sign in or create an account to start your secure journaling journey.</p>
             <SignInButton mode="modal">
-              <button className="framer-button px-10 py-4 bg-gray-900 text-white rounded-full text-lg shadow-sm hover:shadow-md transition-all flex items-center gap-2">
+              <button className="framer-button px-10 py-4 bg-gray-900 text-white rounded-full text-lg shadow-sm hover:shadow-md transition-all flex items-center gap-2 cursor-pointer">
                 Sign In to Continue <span className="text-sm">→</span>
               </button>
             </SignInButton>
@@ -191,7 +200,7 @@ export default function LandingPage() {
                     key={act.id}
                     whileTap={{ scale: 0.97 }}
                     onClick={() => setSelectedActivity(act.title)}
-                    className={`p-6 rounded-2xl flex flex-col items-center gap-4 transition-all duration-300 border ${
+                    className={`p-6 rounded-2xl flex flex-col items-center gap-4 transition-all duration-300 border cursor-pointer ${
                       selectedActivity === act.title 
                         ? 'border-gray-900 bg-gray-900 text-white shadow-lg' 
                         : 'border-gray-100 bg-white text-gray-400 hover:border-gray-300 hover:text-gray-900'
@@ -223,7 +232,7 @@ export default function LandingPage() {
               <button
                 onClick={handleStart}
                 disabled={!selectedActivity || !projectName.trim()}
-                className="framer-button px-12 py-4 text-lg w-full md:w-auto"
+                className="framer-button px-12 py-4 text-lg w-full md:w-auto cursor-pointer"
               >
                 Continue
               </button>
