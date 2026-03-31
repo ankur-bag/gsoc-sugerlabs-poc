@@ -12,10 +12,22 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Sugar Labs AI Reflection API", lifespan=lifespan)
 
 import os
+import re
 
 # Configure CORS
 # Read allowed origins from environment variable, fallback to local development URLs
-allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000").split(",")
+raw_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000").split(",")
+
+# Process origins: strip whitespace and ensure both with/without trailing slash are handled
+allowed_origins = []
+for o in raw_origins:
+    o = o.strip()
+    if not o: continue
+    allowed_origins.append(o)
+    if o.endswith("/"):
+        allowed_origins.append(o.rstrip("/"))
+    else:
+        allowed_origins.append(o + "/")
 
 app.add_middleware(
     CORSMiddleware,
@@ -23,6 +35,8 @@ app.add_middleware(
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
+    # Safely allow anything on vercel subdomain if the above matches fail
+    allow_origin_regex=r"https://.*\.vercel\.app",
 )
 
 from app.routes import onboarding, reflection
