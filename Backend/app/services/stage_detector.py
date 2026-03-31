@@ -1,4 +1,4 @@
-STAGES = ["experience", "reflection", "conceptualization", "experimentation"]
+STAGES = ["description", "feelings", "evaluation", "learning", "next steps"]
 
 def get_next_stage(current_stage: str) -> str:
     """Returns the next stage in Kolb's cycle, or 'done' if completed."""

@@ -1,28 +1,31 @@
-from app.models.reflection_model import ReflectionSession, Message
+from app.models.reflection_model import ReflectionSession
 from app.models.user_model import UserInDB
 from app.services.llm_service import generate_chat_response
 from app.services.personalization import format_system_prompt
-from app.services.stage_detector import get_next_stage
+
 
 async def process_next_question(session: ReflectionSession, user: UserInDB) -> str:
-    """Generate the next question based on current stage and history."""
+    """Generate the next question based on current stage and history (5-question limit)."""
     
-    # Strict child-friendly progression: exactly 4 user messages total to complete the 4 Kolb stages.
+    # 5 specific stages: Description, Feelings, Evaluation, Learning, Next Steps.
+    # user_msg_count tracks how many stages have been answered by the child.
     user_msg_count = sum(1 for m in session.messages if m.role == "user")
     
     if user_msg_count == 0:
-        session.current_stage = "experience"
+        session.current_stage = "description"
     elif user_msg_count == 1:
-        session.current_stage = "reflection"
+        session.current_stage = "feelings"
     elif user_msg_count == 2:
-        session.current_stage = "conceptualization"
+        session.current_stage = "evaluation"
     elif user_msg_count == 3:
-        session.current_stage = "experimentation"
+        session.current_stage = "learning"
+    elif user_msg_count == 4:
+        session.current_stage = "next steps"
     else:
         session.current_stage = "done"
         
     if session.current_stage == "done":
-        return "You've completed the reflection cycle! Click Summarize to see what you learned."
+        return "You've completed the reflection journal! Thank you for sharing your thoughts! "
 
     system_prompt = format_system_prompt(user, session.activity_type, session.current_stage)
     
