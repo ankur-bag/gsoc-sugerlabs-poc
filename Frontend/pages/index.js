@@ -100,7 +100,7 @@ export default function LandingPage() {
       </section>
 
       {/* How Reflection Works — Kolb's Experiential Learning Cycle */}
-      <section id="how-it-works" className="py-28 md:py-36 px-6 relative z-10 bg-gray-50/40">
+      <section id="how-it-works" className="py-28 md:py-36 px-6 relative z-10 bg-white/60">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <motion.div
