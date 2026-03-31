@@ -5,27 +5,24 @@ from app.services.personalization import format_system_prompt
 
 
 async def process_next_question(session: ReflectionSession, user: UserInDB) -> str:
-    """Generate the next question based on current stage and history (5-question limit)."""
+    """Generate the next question based on Kolb's 4-stage cycle (4-question limit)."""
     
-    # 5 specific stages: Description, Feelings, Evaluation, Learning, Next Steps.
-    # user_msg_count tracks how many stages have been answered by the child.
+    # Kolb's 4 stages: Concrete Experience, Reflective Observation, Abstract Conceptualization, Active Experimentation.
     user_msg_count = sum(1 for m in session.messages if m.role == "user")
     
     if user_msg_count == 0:
-        session.current_stage = "description"
+        session.current_stage = "concrete experience"
     elif user_msg_count == 1:
-        session.current_stage = "feelings"
+        session.current_stage = "reflective observation"
     elif user_msg_count == 2:
-        session.current_stage = "evaluation"
+        session.current_stage = "abstract conceptualization"
     elif user_msg_count == 3:
-        session.current_stage = "learning"
-    elif user_msg_count == 4:
-        session.current_stage = "next steps"
+        session.current_stage = "active experimentation"
     else:
         session.current_stage = "done"
         
     if session.current_stage == "done":
-        return "You've completed the reflection journal!"
+        return "Thank you for sharing your reflections! You're a great maker ⭐"
 
     system_prompt = format_system_prompt(user, session.activity_type, session.project_name)
     
