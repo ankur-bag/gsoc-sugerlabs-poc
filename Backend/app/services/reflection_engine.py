@@ -25,9 +25,9 @@ async def process_next_question(session: ReflectionSession, user: UserInDB) -> s
         session.current_stage = "done"
         
     if session.current_stage == "done":
-        return "You've completed the reflection journal! Thank you for sharing your thoughts! "
+        return "You've completed the reflection journal!"
 
-    system_prompt = format_system_prompt(user, session.activity_type, session.current_stage)
+    system_prompt = format_system_prompt(user, session.activity_type, session.project_name)
     
     if not session.messages:
         history = []
@@ -43,7 +43,26 @@ async def process_next_question(session: ReflectionSession, user: UserInDB) -> s
             new_message = "Please ask the next follow-up question."
 
     response_text = await generate_chat_response(system_prompt, history, new_message)
-    return response_text
+    
+    # Parse the response to extract only the question for the child
+    # Format expected:
+    # Stage: <stage>
+    # Question: <question>
+    
+    if "Stage: complete" in response_text or "Stage: stage: complete" in response_text.lower():
+        session.current_stage = "done"
+        return "You've completed the reflection journal! Thank you for sharing your thoughts! redirecting..."
+
+    clean_question = response_text
+    if "Question:" in response_text:
+        clean_question = response_text.split("Question:", 1)[1].strip()
+    elif "\n" in response_text:
+        # Fallback: if "Question:" is missing but there's a newline, assume first line is Stage and rest is Question
+        parts = response_text.split("\n", 1)
+        if "Stage:" in parts[0] and len(parts) > 1:
+            clean_question = parts[1].strip()
+
+    return clean_question
 
 async def generate_summary(session: ReflectionSession, user: UserInDB) -> str:
     """Summarize the reflection session."""
