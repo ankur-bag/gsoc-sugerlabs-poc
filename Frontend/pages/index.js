@@ -99,93 +99,109 @@ export default function LandingPage() {
         </motion.div>
       </section>
 
-      {/* How AI Reflection Works — Kolb's Experiential Learning Cycle */}
-      <section id="how-it-works" className="py-32 px-6 relative z-10 bg-white">
+      {/* How Reflection Works — Kolb's Experiential Learning Cycle */}
+      <section id="how-it-works" className="py-28 md:py-36 px-6 relative z-10 bg-gray-50/40">
         <div className="max-w-5xl mx-auto">
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }}
             transition={springTransition}
-            className="text-center mb-10"
+            className="text-center mb-6"
           >
-            <h2 className="text-4xl md:text-5xl font-light text-gray-900 tracking-tight mb-6">
-              How Reflection process Works?
+            <p className="text-xs uppercase tracking-[0.25em] text-gray-400 font-medium mb-5">Grounded in Learning Science</p>
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 tracking-tight">
+              How Reflection Works
             </h2>
-            <p className="text-gray-400 font-light text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-              Powered by <span className="text-gray-700 font-normal">Kolb&apos;s Experiential Learning Cycle</span> — a well-known model in constructionist education.
-            </p>
           </motion.div>
 
           <motion.p
             initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-center text-gray-500 font-light text-base md:text-lg max-w-2xl mx-auto mb-20 leading-relaxed"
+            transition={{ delay: 0.15, duration: 0.8 }}
+            className="text-center text-gray-400 font-light text-base md:text-lg max-w-2xl mx-auto mb-20 leading-relaxed"
           >
-            The AI gently guides each child through 4 simple stages, helping them move from just &ldquo;making&rdquo; to deeply understanding and improving their future projects — perfectly aligned with Sugar Labs&apos; constructionist philosophy.
+            Our AI guides every child through <span className="text-gray-600 font-normal">Kolb&apos;s Experiential Learning Cycle</span> — four simple stages that turn creative projects into deep understanding.
           </motion.p>
 
-          {/* Kolb Cycle Visual — 4 Stage Cards */}
+          {/* 4 Stage Cards — Vertical Timeline */}
+          <div className="relative max-w-3xl mx-auto">
+            {/* Vertical connector line (desktop) */}
+            <div className="hidden md:block absolute left-[27px] top-8 bottom-8 w-px bg-gradient-to-b from-gray-200 via-gray-200 to-transparent" />
+
+            {[{
+              num: "01",
+              title: "Concrete Experience",
+              subtitle: "What did you do?",
+              desc: "The child describes the activity they just completed — what they built, created, or explored in their Sugar project.",
+              accent: "bg-gray-900",
+              ring: "ring-gray-900/10",
+              bg: "bg-white"
+            }, {
+              num: "02",
+              title: "Reflective Observation",
+              subtitle: "How did it feel?",
+              desc: "They reflect on the experience — what surprised them, what was hard, and what emotions came up while working.",
+              accent: "bg-gray-700",
+              ring: "ring-gray-700/10",
+              bg: "bg-white"
+            }, {
+              num: "03",
+              title: "Abstract Conceptualization",
+              subtitle: "What did you learn?",
+              desc: "The child connects their experience to a lesson — a new skill, a pattern they noticed, or an idea they now understand better.",
+              accent: "bg-gray-500",
+              ring: "ring-gray-500/10",
+              bg: "bg-white"
+            }, {
+              num: "04",
+              title: "Active Experimentation",
+              subtitle: "What will you try next?",
+              desc: "They look forward — planning how to apply what they learned in their next project or iteration.",
+              accent: "bg-gray-400",
+              ring: "ring-gray-400/10",
+              bg: "bg-white"
+            }].map((stage, i) => (
+              <motion.div
+                key={stage.num}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ ...springTransition, delay: i * 0.1 }}
+                className="relative flex items-start gap-6 md:gap-8 mb-6 last:mb-0 group"
+              >
+                {/* Timeline dot */}
+                <div className="relative z-10 flex-shrink-0">
+                  <div className={`w-[54px] h-[54px] rounded-2xl ${stage.accent} text-white flex items-center justify-center text-sm font-medium shadow-sm ring-4 ${stage.ring} transition-all duration-300 group-hover:shadow-md group-hover:scale-105`}>
+                    {stage.num}
+                  </div>
+                </div>
+
+                {/* Card */}
+                <motion.div
+                  whileHover={{ y: -2 }}
+                  className={`${stage.bg} flex-1 p-6 md:p-8 rounded-2xl border border-gray-100 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 group-hover:shadow-lg group-hover:border-gray-200`}
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-3 mb-2">
+                    <h3 className="text-lg md:text-xl font-medium text-gray-900 tracking-tight">{stage.title}</h3>
+                    <span className="text-sm text-gray-400 font-light italic">{stage.subtitle}</span>
+                  </div>
+                  <p className="text-gray-500 font-light text-sm md:text-base leading-relaxed">{stage.desc}</p>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Cycle indicator */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, margin: "-50px" }}
-            transition={{ ...springTransition, delay: 0.1 }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="flex justify-center mt-16"
           >
-            {/* Stage 1 */}
-            <motion.div whileHover={{ y: -4 }} className="relative p-8 rounded-3xl border border-gray-100 bg-gradient-to-br from-blue-50/50 to-white transition-all duration-300 hover:shadow-lg hover:border-blue-200">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-lg font-medium">1</div>
-                <h3 className="text-lg md:text-xl font-medium text-gray-900">Concrete Experience</h3>
-              </div>
-              <p className="text-gray-500 font-light leading-relaxed">What did you make? Tell me about your project and what you built today.</p>
-              <div className="absolute top-4 right-4 text-2xl opacity-50">{"\uD83C\uDFA8"}</div>
-            </motion.div>
-
-            {/* Stage 2 */}
-            <motion.div whileHover={{ y: -4 }} className="relative p-8 rounded-3xl border border-gray-100 bg-gradient-to-br from-purple-50/50 to-white transition-all duration-300 hover:shadow-lg hover:border-purple-200">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-lg font-medium">2</div>
-                <h3 className="text-lg md:text-xl font-medium text-gray-900">Reflective Observation</h3>
-              </div>
-              <p className="text-gray-500 font-light leading-relaxed">How did it feel? What did you notice while working on your project?</p>
-              <div className="absolute top-4 right-4 text-2xl opacity-50">{"\uD83D\uDE0A"}</div>
-            </motion.div>
-
-            {/* Stage 3 */}
-            <motion.div whileHover={{ y: -4 }} className="relative p-8 rounded-3xl border border-gray-100 bg-gradient-to-br from-amber-50/50 to-white transition-all duration-300 hover:shadow-lg hover:border-amber-200">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-lg font-medium">3</div>
-                <h3 className="text-lg md:text-xl font-medium text-gray-900">Abstract Conceptualization</h3>
-              </div>
-              <p className="text-gray-500 font-light leading-relaxed">What did you learn? What new ideas or skills did you pick up?</p>
-              <div className="absolute top-4 right-4 text-2xl opacity-50">{"\u2B50"}</div>
-            </motion.div>
-
-            {/* Stage 4 */}
-            <motion.div whileHover={{ y: -4 }} className="relative p-8 rounded-3xl border border-gray-100 bg-gradient-to-br from-green-50/50 to-white transition-all duration-300 hover:shadow-lg hover:border-green-200">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-lg font-medium">4</div>
-                <h3 className="text-lg md:text-xl font-medium text-gray-900">Active Experimentation</h3>
-              </div>
-              <p className="text-gray-500 font-light leading-relaxed">What will you try next time? How will you use what you learned?</p>
-              <div className="absolute top-4 right-4 text-2xl opacity-50">{"\uD83D\uDE80"}</div>
-            </motion.div>
-          </motion.div>
-
-          {/* Cycle Arrow Hint */}
-          <motion.div
-            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="flex justify-center mt-12"
-          >
-            <div className="flex items-center gap-3 text-gray-300 text-sm font-light">
-              <svg width="80" height="20" viewBox="0 0 80 20" fill="none">
-                <path d="M2 10 C 20 2, 60 2, 74 10" stroke="currentColor" strokeWidth="1.5" fill="none" strokeDasharray="4 3" />
-                <path d="M70 6 L 76 10 L 70 14" stroke="currentColor" strokeWidth="1.5" fill="none" />
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white border border-gray-100 shadow-sm">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="text-gray-400 animate-spin" style={{ animationDuration: '8s' }}>
+                <path d="M10 2 A8 8 0 1 1 2 10" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+                <path d="M10 2 L 12 4.5 M10 2 L 12 0" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
-              <span>The cycle repeats with each new project</span>
-              <svg width="80" height="20" viewBox="0 0 80 20" fill="none" className="rotate-180">
-                <path d="M2 10 C 20 2, 60 2, 74 10" stroke="currentColor" strokeWidth="1.5" fill="none" strokeDasharray="4 3" />
-                <path d="M70 6 L 76 10 L 70 14" stroke="currentColor" strokeWidth="1.5" fill="none" />
-              </svg>
+              <span className="text-sm text-gray-400 font-light">The cycle repeats with every new project</span>
             </div>
           </motion.div>
         </div>
