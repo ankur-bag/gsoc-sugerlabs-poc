@@ -1,208 +1,183 @@
-## GSoC 2026 Proposal – Sugar Labs
+# Intelligent Reflection System for Sugar Journal (GSoC 2026 PoC)
 
-This repository contains a Proof of Concept for my Google Summer of Code 2026 proposal.
+## Overview
 
-Intelligent Reflection System for Sugar Journal (GSoC 2026 PoC)
+This project is a Proof of Concept (PoC) for an AI-guided reflection system designed for the Sugar Journal. The goal is to support learners in reflecting on their activities through structured, guided prompts instead of unstructured free-form input.
 
-A Proof of Concept for integrating an AI-driven, structured reflection workflow into the Sugar Journal, grounded in Kolb’s Experiential Learning Cycle.
+The system is based on Kolb’s Experiential Learning Cycle:
+- Concrete Experience
+- Reflective Observation
+- Abstract Conceptualization
+- Active Experimentation
 
-Overview
+It demonstrates how AI can be used to scaffold reflection and improve learning outcomes for young users.
 
-This project explores the design and implementation of an AI-guided reflection system within the Sugar Labs ecosystem. The goal is to transform unstructured journaling into a guided cognitive process, enabling learners—especially children—to reflect more effectively on their activities.
+---
 
-Unlike traditional free-form journal entries, this system introduces context-aware prompts aligned with Kolb’s Learning Cycle:
+## Problem Statement
 
-Concrete Experience
-Reflective Observation
-Abstract Conceptualization
-Active Experimentation
+The current Sugar Journal allows users to record activities but does not provide structured guidance for reflection. This leads to:
+- Shallow or incomplete reflections
+- Low engagement from younger users
+- Difficulty in expressing learning outcomes
 
-The PoC validates how AI can scaffold reflection by dynamically generating prompts and structuring responses.
+---
 
-Problem Statement
+## Proposed Solution
 
-The current Sugar Journal allows users to log activities but lacks:
+This project introduces an AI-powered reflection workflow that:
+- Guides users step-by-step through reflection stages
+- Generates structured, child-friendly prompts
+- Adapts prompts based on user input
+- Stores reflections in a structured format
 
-Structured reflection guidance
-Cognitive scaffolding for young learners
-Adaptive or context-aware feedback
+---
 
-This often results in:
+## System Architecture
 
-Shallow reflections
-Low engagement
-Difficulty in articulating learning outcomes
-Proposed Solution
 
-Introduce an AI-powered reflection layer that:
-
-Guides users through a multi-step reflection pipeline
-Generates child-friendly, context-sensitive prompts
-Structures responses into meaningful learning artifacts
-Integrates seamlessly with Sugar Journal entries
-System Architecture
 +---------------------+
-|   Sugar Activity    |
+| Sugar Activity |
 +----------+----------+
-           |
-           v
+|
+v
 +---------------------+
-|  Journal Entry Hook |
+| Journal Entry Hook |
 +----------+----------+
-           |
-           v
+|
+v
 +-----------------------------+
-| Reflection Engine (Core)    |
-|-----------------------------|
-| Prompt Generator            |
-| Context Extractor           |
-| Response Structurer         |
+
+Reflection Engine
+Prompt Generator
+Context Extractor
+Response Structurer
 +----------+------------------+
-           |
-           v
+       |
+       v
+
 +-----------------------------+
-| AI Layer (LLM / Rules)      |
-|-----------------------------|
-| Prompt Expansion            |
-| Language Simplification     |
-| Adaptive Guidance           |
+
+AI Layer
+Prompt Expansion
+Language Simplification
+Adaptive Guidance
 +----------+------------------+
-           |
-           v
+       |
+       v
+
 +-----------------------------+
-| Storage Layer               |
-|-----------------------------|
-| Structured Reflection डेटा |
-| Journal Metadata Mapping    |
+
+Storage Layer
+Structured Reflection Data
+Journal Metadata Mapping
 +-----------------------------+
-Core Components
-1. Reflection Engine
 
-The central orchestration unit responsible for:
+---
 
-Managing the reflection lifecycle
-Sequencing prompts according to Kolb’s stages
-Ensuring logical flow between responses
-Responsibilities:
-State management of reflection steps
-Input validation and normalization
-Transition control between stages
-2. Prompt Generator
+## Core Components
 
-Generates structured prompts based on:
+### Reflection Engine
+Controls the overall reflection workflow.
+- Manages stages of reflection
+- Handles state transitions
+- Validates inputs
 
-Current reflection stage
-User’s previous responses
-Activity metadata
-Example Mapping:
-Stage	Prompt Type
-Experience	“What did you do?”
-Reflection	“What was easy or difficult?”
-Conceptualization	“What did you learn?”
-Experimentation	“What will you try next time?”
-3. Context Extractor
+### Prompt Generator
+Generates prompts based on:
+- Reflection stage
+- Previous responses
+- Activity context
 
+Example prompts:
+- Experience: What did you do?
+- Reflection: What was easy or difficult?
+- Conceptualization: What did you learn?
+- Experimentation: What will you try next time?
+
+### Context Extractor
 Processes:
+- Activity metadata
+- User inputs
 
-Journal metadata
-Activity type
-User inputs
+Used to maintain context and improve prompt relevance.
 
-Used to:
+### AI Layer
+Provides:
+- Prompt refinement
+- Child-friendly language transformation
+- Follow-up question generation
 
-Personalize prompts
-Maintain contextual continuity
-4. AI Layer
+Can be implemented using:
+- Rule-based templates
+- LLM APIs
 
-This PoC uses an AI abstraction layer that can be backed by:
+### Response Structurer
+Formats responses into structured data.
 
-Rule-based templates (fallback)
-LLM-based prompt expansion
-Capabilities:
-Rewriting prompts into child-friendly language
-Generating follow-up questions
-Simplifying complex inputs
-5. Response Structurer
-
-Transforms raw user input into:
-
-Structured JSON format
-Tagged reflection stages
-Metadata-linked entries
 Example:
+```json
 {
   "experience": "I built a simple game",
-  "reflection": "It was hard to fix bugs",
-  "conceptualization": "Debugging takes patience",
+  "reflection": "Fixing bugs was difficult",
+  "conceptualization": "Debugging requires patience",
   "experimentation": "Next time I will test step by step"
 }
 Data Flow
 User completes an activity
 Journal entry is triggered
-Reflection engine initiates session
-Prompts are generated step-by-step
+Reflection session starts
+Prompts are generated sequentially
 User responses are collected
-AI refines or adapts prompts
+AI adapts or refines prompts
 Final structured reflection is stored
 Technology Stack
-Layer	Technology
-Language	Python
-Interface	(CLI / Simple UI depending on implementation)
-AI Layer	OpenAI API / Rule-based fallback
-Data Format	JSON
-Integration	Sugar Journal APIs (conceptual / experimental)
+Language: Python
+Data Format: JSON
+AI Layer: LLM API or rule-based system
+Interface: CLI or simple UI
+Integration: Sugar Journal (conceptual / experimental)
 Installation
 git clone https://github.com/ankur-bag/gsoc-sugerlabs-poc.git
 cd gsoc-sugerlabs-poc
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-Running the Project
+Usage
 python main.py
+
+Follow the prompts to simulate a guided reflection session.
+
 Design Decisions
-Why Guided Reflection?
+Structured Prompts
 
-Children often struggle with open-ended prompts. Structured guidance:
+Structured prompts reduce cognitive load and help users provide meaningful responses.
 
-Reduces cognitive load
-Improves response quality
-Encourages deeper thinking
-Why Kolb’s Cycle?
+Kolb’s Learning Cycle
 
-It provides:
+Provides a well-defined framework for organizing reflection into stages.
 
-A proven pedagogical framework
-A natural progression of thought
-Clear mapping to prompt generation
-Why AI Assistance?
+AI Assistance
 
-AI enables:
+Allows dynamic adaptation of prompts and simplification of language for children.
 
-Adaptive questioning
-Personalized learning paths
-Language simplification
-Limitations (PoC Scope)
-No full Sugar Journal integration (simulated hooks)
-Limited personalization memory
-Basic AI adaptation (not fully dynamic)
-Minimal UI/UX focus
+Limitations
+No full integration with Sugar Journal (PoC only)
+Limited personalization across sessions
+Basic AI adaptation
+Minimal user interface
 Future Work
-Native Sugar Activity integration
+Full integration with Sugar Activities and Journal
 Persistent learner profiles
-Reinforcement learning for adaptive prompts
-Multilingual prompt generation
-Offline-first AI (edge models)
-Teacher/mentor analytics dashboard
+Adaptive prompt generation based on history
+Multilingual support
+Offline-compatible AI models
+Analytics for teachers and mentors
 Contributing
 Fork the repository
-Create a feature branch
-Commit changes
-Open a Pull Request
+Create a new branch
+Make changes
+Submit a pull request
 License
 
 MIT License
-
-Acknowledgments
-Sugar Labs community
-Walter Bender and mentors
-Kolb’s Experiential Learning Theory
