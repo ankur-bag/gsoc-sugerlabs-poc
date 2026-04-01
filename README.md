@@ -35,45 +35,25 @@ This project introduces an AI-powered reflection workflow that:
 
 ## System Architecture
 
+Sugar Reflect Buddy System Architecture
+Reflection UI
+Student (Child User)
+State Manager
+Input Handler
+Response Processor
+Reflection Controller
+Session Manager
+Prompt Engine
+User Data Collection
+Session Storage
+Reflection Entries Storage
+Sugar Journal System
+API Gateway
+LLM Model
+Output Formatter<img width="1098" height="841" alt="image" src="https://github.com/user-attachments/assets/f6d3d1a2-8c54-40e1-b8ef-c858de41310c" />
 
-+---------------------+
-| Sugar Activity |
-+----------+----------+
-|
-v
-+---------------------+
-| Journal Entry Hook |
-+----------+----------+
-|
-v
-+-----------------------------+
 
-Reflection Engine
-Prompt Generator
-Context Extractor
-Response Structurer
-+----------+------------------+
-       |
-       v
 
-+-----------------------------+
-
-AI Layer
-Prompt Expansion
-Language Simplification
-Adaptive Guidance
-+----------+------------------+
-       |
-       v
-
-+-----------------------------+
-
-Storage Layer
-Structured Reflection Data
-Journal Metadata Mapping
-+-----------------------------+
-
----
 
 ## Core Components
 
@@ -129,61 +109,69 @@ Example:
 ```
 
 
-Data Flow
-User completes an activity
-Journal entry is triggered
-Reflection session starts
-Prompts are generated sequentially
-User responses are collected
-AI adapts or refines prompts
-Final structured reflection is stored
-Technology Stack
-Language: Python
-Data Format: JSON
-AI Layer: LLM API or rule-based system
-Interface: CLI or simple UI
-Integration: Sugar Journal (conceptual / experimental)
-Installation
+
+## Data Flow
+User completes an activity → Journal entry is triggered → Reflection session starts → Prompts are generated sequentially → User responses are collected → AI adapts or refines prompts → Final structured reflection is stored
+
+## Technology Stack
+- **Language**: Python
+- **Data Format**: JSON
+- **AI Layer**: LLM API or rule-based system
+- **Interface**: CLI or simple UI
+- **Integration**: Sugar Journal (conceptual / experimental)
+
+## Installation
+
+```bash
 git clone https://github.com/ankur-bag/gsoc-sugerlabs-poc.git
 cd gsoc-sugerlabs-poc
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-Usage
+```
+
+## Usage
+
+```bash
 python main.py
+```
 
 Follow the prompts to simulate a guided reflection session.
 
-Design Decisions
-Structured Prompts
+## Design Decisions
 
+### Structured Prompts
 Structured prompts reduce cognitive load and help users provide meaningful responses.
 
-Kolb’s Learning Cycle
-
+### Kolb's Learning Cycle
 Provides a well-defined framework for organizing reflection into stages.
 
-AI Assistance
-
+### AI Assistance
 Allows dynamic adaptation of prompts and simplification of language for children.
 
-Limitations
-No full integration with Sugar Journal (PoC only)
-Limited personalization across sessions
-Basic AI adaptation
-Minimal user interface
-Future Work
-Full integration with Sugar Activities and Journal
-Persistent learner profiles
-Adaptive prompt generation based on history
-Multilingual support
-Offline-compatible AI models
-Analytics for teachers and mentors
-Contributing
-Fork the repository
-Create a new branch
-Make changes
-Submit a pull request
-License
+## Limitations
+- No full integration with Sugar Journal (PoC only)
+- Limited personalization across sessions
+- Basic AI adaptation
+- Minimal user interface
 
-MIT License
+## Future Work
+- Full integration with Sugar Activities and Journal
+- Persistent learner profiles
+- Adaptive prompt generation based on history
+- Multilingual support
+- Offline-compatible AI models
+- Analytics for teachers and mentors
+
+## Contributing
+1. Fork the repository
+2. Create a new branch
+3. Make changes
+4. Submit a pull request
+
+## License
+[MIT License](LICENSE)
+
+## Acknowledgments
+- Sugar Labs community
+- Kolb's Experiential Learning Theory
