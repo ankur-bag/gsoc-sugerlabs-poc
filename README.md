@@ -113,16 +113,22 @@ Can be implemented using:
 - LLM APIs
 
 ### Response Structurer
+
 Formats responses into structured data.
 
 Example:
+
 ```json
 {
   "experience": "I built a simple game",
   "reflection": "Fixing bugs was difficult",
   "conceptualization": "Debugging requires patience",
   "experimentation": "Next time I will test step by step"
+
 }
+```
+
+
 Data Flow
 User completes an activity
 Journal entry is triggered
