@@ -1,4 +1,4 @@
-## 🚀 GSoC 2026 Proposal – Sugar Labs
+## GSoC 2026 Proposal – Sugar Labs
 
 This repository contains a Proof of Concept for my Google Summer of Code 2026 proposal.
 
